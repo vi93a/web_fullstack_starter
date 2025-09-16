@@ -1,0 +1,15 @@
+node_modules/
+**/*/node_modules/
+
+dist/
+**/*/dist/
+
+tsconfig.tsbuildinfo
+**/*/tsconfig.tsbuildinfo
+**/*/tsconfig.build.tsbuildinfo
+.env
+*/.env
+
+api_collection/web_fullstack_starter/environments/*
+.DS_Store
+**/*/.DS_Store

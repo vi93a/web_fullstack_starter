@@ -1,0 +1,37 @@
+{
+  "name": "web_fullstack_starter",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev:server": "pnpm --filter @repo/backend dev",
+    "start:server": "pnpm --filter @repo/backend start",
+    "build:server": "pnpm build:packages && pnpm --filter @repo/backend build",
+    "dev:packages": "pnpm --filter './packages/*' dev",
+    "build:packages": "pnpm --filter './packages/*' build",
+    "clean": "pnpm --filter './apps/*' clean && pnpm --filter './packages/*' clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vi93a/repo.git"
+  },
+  "keywords": [],
+  "author": "Vinod Sonagara",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/vi93a/repo/issues"
+  },
+  "homepage": "https://github.com/vi93a/repo#readme",
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^24.5.0",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=22.19.0",
+    "pnpm": ">=10.16.0"
+  },
+  "type": "module"
+}

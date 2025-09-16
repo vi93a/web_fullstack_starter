@@ -1,0 +1,28 @@
+import express from "express";
+import * as bodyParser from "body-parser";
+import cors from "cors";
+import http from "http";
+import { handleError } from "@repo/backend_utils";
+
+import { config } from "../../utils/config";
+import { setupRoutes } from "./routes";
+
+export const startServer = async (): Promise<http.Server> => {
+  console.log(`Starting server as ${config.ServerMode} on port ${config.ServerPort}`);
+
+  const app = express();
+
+  app.use(cors({ origin: true, credentials: true }));
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
+
+  const server = app.listen(config.ServerPort, () => {
+    console.log(`HTTP server started on port: ${config.ServerPort}`);
+  });
+
+  setupRoutes(app);
+
+  app.use(handleError);
+
+  return server;
+};
