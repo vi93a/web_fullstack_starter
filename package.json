@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/vi93a/repo#readme",
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
+    "@repo/typescript_configs": "workspace:*",
     "@types/node": "^24.5.0",
     "prettier": "^3.6.2",
     "tsx": "^4.20.5",

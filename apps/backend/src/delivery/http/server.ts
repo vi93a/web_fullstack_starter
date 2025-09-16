@@ -6,8 +6,9 @@ import { handleError } from "@repo/backend_utils";
 
 import { config } from "../../utils/config";
 import { setupRoutes } from "./routes";
+import { UsecaseStore } from "../../../src/internal/usecases";
 
-export const startServer = async (): Promise<http.Server> => {
+export const startServer = async (usecaseStore: UsecaseStore): Promise<http.Server> => {
   console.log(`Starting server as ${config.ServerMode} on port ${config.ServerPort}`);
 
   const app = express();
@@ -20,7 +21,7 @@ export const startServer = async (): Promise<http.Server> => {
     console.log(`HTTP server started on port: ${config.ServerPort}`);
   });
 
-  setupRoutes(app);
+  setupRoutes(app, usecaseStore);
 
   app.use(handleError);
 
