@@ -7,7 +7,9 @@
     "dev": "tsx watch src/main.ts",
     "build": "tsc -b -v",
     "start": "node dist/main.js",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "migrate:generate": "drizzle-kit generate",
+    "migrate:apply": "drizzle-kit migrate"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
   "packageManager": "pnpm@10.16.0",
   "dependencies": {
     "@repo/backend_utils": "workspace:*",
+    "better-auth": "^1.3.11",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",

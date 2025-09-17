@@ -3,14 +3,18 @@ import { config } from "../config";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Client, Pool } from "pg";
 
-export async function connectToPostgres(): Promise<NodePgDatabase> {
+let db: NodePgDatabase;
+
+export async function getDatabaseConnection(): Promise<NodePgDatabase> {
+  if (db) return db;
+
   const client = new Client({
     connectionString: config.PostgresUrl,
   });
 
   await client.connect();
 
-  const db = drizzle(client);
+  db = drizzle(client);
 
   return db;
 }

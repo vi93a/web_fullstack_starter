@@ -2,7 +2,7 @@ import http from "http";
 
 import { startServer } from "./delivery/http/server";
 import { config, ServerMode } from "./utils/config";
-import { connectToPostgres } from "./utils/database";
+import { getDatabaseConnection } from "./utils/database";
 import { RepoStore } from "./internal/repository";
 import { UsecaseStore } from "./internal/usecases";
 import { NodePgDatabase } from "drizzle-orm/node-postgres";
@@ -11,7 +11,7 @@ async function main() {
   let db: NodePgDatabase;
 
   try {
-    db = await connectToPostgres();
+    db = await getDatabaseConnection();
   } catch (err) {
     console.error("Failed to connect to database:", err);
     return process.exit(1);
