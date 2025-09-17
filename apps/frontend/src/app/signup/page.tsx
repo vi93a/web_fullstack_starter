@@ -1,7 +1,9 @@
+import { SignupForm } from "@/components/auth/signup-form";
+
 export default function Signup() {
   return (
-    <div>
-      <h1>Signup</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <SignupForm />
     </div>
   );
 }

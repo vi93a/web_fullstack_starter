@@ -1,20 +1,15 @@
 import { NodePgDatabase } from "drizzle-orm/node-postgres";
 import { config } from "../config";
 import { drizzle } from "drizzle-orm/node-postgres";
-import { Client, Pool } from "pg";
+import { Client } from "pg";
+import * as schema from "../../internal/repository/auth";
 
-let db: NodePgDatabase;
+const client = new Client({
+  connectionString: config.PostgresUrl,
+});
 
-export async function getDatabaseConnection(): Promise<NodePgDatabase> {
-  if (db) return db;
+export const db = drizzle(client, { schema });
 
-  const client = new Client({
-    connectionString: config.PostgresUrl,
-  });
-
+export async function initializeDatabase(): Promise<void> {
   await client.connect();
-
-  db = drizzle(client);
-
-  return db;
 }

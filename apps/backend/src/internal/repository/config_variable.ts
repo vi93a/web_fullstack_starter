@@ -19,7 +19,7 @@ export interface ConfigVariableRepository {
 }
 
 export class ConfigVariableRepositoryImpl implements ConfigVariableRepository {
-  constructor(private readonly db: NodePgDatabase) {}
+  constructor(private readonly db: NodePgDatabase<any>) {}
 
   async getConfigVariable(key: string): Promise<ConfigVariable | null> {
     const configVariable = await this.db.select().from(configVariableTable).where(eq(configVariableTable.key, key));

@@ -2,16 +2,14 @@ import http from "http";
 
 import { startServer } from "./delivery/http/server";
 import { config, ServerMode } from "./utils/config";
-import { getDatabaseConnection } from "./utils/database";
+import { initializeDatabase, db } from "./utils/database";
 import { RepoStore } from "./internal/repository";
 import { UsecaseStore } from "./internal/usecases";
-import { NodePgDatabase } from "drizzle-orm/node-postgres";
 
 async function main() {
-  let db: NodePgDatabase;
-
   try {
-    db = await getDatabaseConnection();
+    await initializeDatabase();
+    console.log("Database connected successfully");
   } catch (err) {
     console.error("Failed to connect to database:", err);
     return process.exit(1);

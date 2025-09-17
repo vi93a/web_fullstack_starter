@@ -4,7 +4,7 @@ import { ConfigVariableRepository, ConfigVariableRepositoryImpl } from "./config
 export class RepoStore {
   configVariableRepo: ConfigVariableRepository;
 
-  constructor(db: NodePgDatabase) {
+  constructor(db: NodePgDatabase<any>) {
     this.configVariableRepo = new ConfigVariableRepositoryImpl(db);
   }
 }
