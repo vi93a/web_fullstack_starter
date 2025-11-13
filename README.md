@@ -18,6 +18,6 @@
 
 ## Migration generation and apply
 
-Go to backend folder and run these commands:
+Go to `apps/backend` folder and run these commands:
 - Generate migration: `pnpm migrate:generate`
 - Apply migration: `pnpm migrate:apply`
